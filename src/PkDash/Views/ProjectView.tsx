@@ -1,44 +1,37 @@
-import { AppActivity, StackLayout, Tab, TabList, TabPanel, Tabs, UiApp } from "@nwrks/uikit";
+import { AppActivity, FlexLayout, Tab, TabList, TabPanel, Tabs, UiApp } from "@nwrks/uikit";
 import { Header } from "../../Common/UiComponents/Header";
 import ProjectSettings from "./Tabs/ProjectSettings";
 import { Releases } from "./Tabs/Releases";
 import { Packages } from "./Tabs/Packages";
-import { useState } from "react";
 
 export default function ProjectView() {
-  const [tabSelected, setTabSelected] = useState(0);
-
-  function handleChangeTab(event: number) {
-    console.log("handleChangeTab() called:", event);
-    setTabSelected(event);
-  }
 
   return (
     <AppActivity theme={"Light"} direction={"Vertical"}>
       <Header displayBackground={false} />
 
       <UiApp>
-        <StackLayout direction={"Vertical"}>
-          <Tabs defaultIndex={0} selectedIndex={tabSelected} onSelect={handleChangeTab}>
+        <FlexLayout style={{ padding: '0.5em' }} flex={1} direction={"Vertical"}>
+          <Tabs>
             <TabList>
-              <Tab id={"releases"}>Releases</Tab>
-              <Tab id={"packages"}>Packages</Tab>
-              <Tab id={"settings"}>Settings</Tab>
+              <Tab index={0}>Releases</Tab>
+              <Tab index={1}>Packages</Tab>
+              <Tab index={2}>Settings</Tab>
             </TabList>
 
-            <TabPanel id={"releases"}>
+            <TabPanel index={0}>
               <Releases />
             </TabPanel>
 
-            <TabPanel id={"packages"}>
+            <TabPanel index={1}>
               <Packages />
             </TabPanel>
 
-            <TabPanel id={"settings"}>
+            <TabPanel index={2}>
               <ProjectSettings />
             </TabPanel>
           </Tabs>
-        </StackLayout>
+        </FlexLayout>
       </UiApp>
     </AppActivity>
   );
