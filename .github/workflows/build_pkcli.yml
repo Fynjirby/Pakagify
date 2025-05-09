@@ -4,11 +4,7 @@ permissions:
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - "prod"
-    tags:
-      - "v*"
+
 
 jobs:
   build:
