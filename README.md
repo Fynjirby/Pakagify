@@ -53,41 +53,43 @@ yarn build:pkdash
 
 ### Using the CLI
 
+## Note: Dont forget to build binary to use all this commands
+
 The CLI provides various commands for managing repositories and packages. Below are some examples:
 
 - **Authentication**:
   ```bash
-  node src/PkCli/Pakagify.cli.js auth <github-token>
+  pkcli auth <github-token>
   ```
 - **Create a New Repository**:
   ```bash
-  node src/PkCli/Pakagify.cli.js mkrepo <repository-name>
+  pkcli mkrepo <repository-name>
   ```
 - **Create an Empty Package**:
   ```bash
-  node src/PkCli/Pakagify.cli.js mkpkg <package-name> --arch=x64 --platform=linux
+  pkcli mkpkg <package-name> --arch=x64 --platform=linux
   ```
 - **Push a Package to a Repository**:
   ```bash
-  node src/PkCli/Pakagify.cli.js pushpkg <repository-name> <package-folder>
+  pkcli pushpkg <repository-name> <package-folder>
   ```
 - **Retrieve a Repository**:
   ```bash
-  node src/PkCli/Pakagify.cli.js retrieve <repository-name>
+  pkcli retrieve <repository-name>
   ```
 - **Delete a Package**:
   ```bash
-  node src/PkCli/Pakagify.cli.js rmpkg <repository-name> <package-name>
+  pkcli rmpkg <repository-name> <package-name>
   ```
 - **Delete a Repository**:
   ```bash
-  node src/PkCli/Pakagify.cli.js rmrepo <repository-name>
+  pkcli rmrepo <repository-name>
   ```
 
 For a full list of commands, refer to the CLI documentation or run:
 
 ```bash
-node src/PkCli/Pakagify.cli.js --help
+pkcli --help
 ```
 
 ## Technologies Used
