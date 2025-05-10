@@ -1,36 +1,26 @@
 # Pakagify
 
-Pakagify is a powerful tool for managing packages and repositories, offering both a Command Line Interface (CLI) and a web-based dashboard for seamless interaction.
-
-## Project Structure
-
-The project is organized as follows:
-
-- **src/**: The main source code of the application.
-  - **Common/**: Shared components and utilities.
-  - **PkCli/**: Implementation of the CLI interface.
-  - **PkDash/**: Web-based dashboard for managing packages.
-- **public/**: Static assets.
-- **tools/**: Helper scripts and utilities.
+Pakagify is a versatile tool designed to simplify the management of GitHub repositories and packages. It provides both a Command Line Interface (CLI) and a web-based dashboard for seamless interaction with repositories, releases, and packages.
 
 ## Features
 
-- **CLI Commands**: Manage packages and repositories directly from the terminal.
-- **Web Dashboard**: A user-friendly interface for managing your projects.
-- **Cross-Platform**: Works on Windows, macOS, and Linux.
+- **CLI Commands**: Perform repository and package management tasks directly from the terminal.
+- **Web Dashboard**: A user-friendly interface for managing repositories, releases, and packages.
+- **GitHub Integration**: Leverages the GitHub API for repository and release management.
+- **Cross-Platform**: Works on macOS, Linux, and Windows.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (version 16 or higher)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Yarn](https://yarnpkg.com/) (preferred for dependency management)
 
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/NukaWorks/Pakagify.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -38,54 +28,66 @@ Before you begin, ensure you have the following installed:
    ```
 3. Install dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 ## Usage
 
 ### Running the Development Server
 
-To start the development server:
+To start the development server for the web dashboard:
+
 ```bash
-npm run dev
+yarn dev:pkdash
 ```
 
-This will launch the application at `http://localhost:3000` (default port).
+This will launch the application at `http://localhost:5123`.
 
 ### Building for Production
 
-To create a production build:
-```bash
-npm run build
-```
+To create a production build of the web dashboard:
 
-### Previewing the Production Build
-
-To preview the production build locally:
 ```bash
-npm run preview
+yarn build:pkdash
 ```
 
 ### Using the CLI
 
-The CLI provides various commands for managing packages and repositories. Below are some examples:
+The CLI provides various commands for managing repositories and packages. Below are some examples:
 
 - **Authentication**:
   ```bash
-  node Pakagify.cli.js auth
+  node src/PkCli/Pakagify.cli.js auth <github-token>
+  ```
+- **Create a New Repository**:
+  ```bash
+  node src/PkCli/Pakagify.cli.js mkrepo <repository-name>
   ```
 - **Create an Empty Package**:
   ```bash
-  node Pakagify.cli.js mk-empty-pkg
+  node src/PkCli/Pakagify.cli.js mkpkg <package-name> --arch=x64 --platform=linux
+  ```
+- **Push a Package to a Repository**:
+  ```bash
+  node src/PkCli/Pakagify.cli.js pushpkg <repository-name> <package-folder>
+  ```
+- **Retrieve a Repository**:
+  ```bash
+  node src/PkCli/Pakagify.cli.js retrieve <repository-name>
   ```
 - **Delete a Package**:
   ```bash
-  node Pakagify.cli.js delete
+  node src/PkCli/Pakagify.cli.js rmpkg <repository-name> <package-name>
+  ```
+- **Delete a Repository**:
+  ```bash
+  node src/PkCli/Pakagify.cli.js rmrepo <repository-name>
   ```
 
 For a full list of commands, refer to the CLI documentation or run:
+
 ```bash
-node Pakagify.cli.js --help
+node src/PkCli/Pakagify.cli.js --help
 ```
 
 ## Technologies Used
@@ -93,26 +95,7 @@ node Pakagify.cli.js --help
 - **Frontend**: React, TypeScript, SCSS
 - **Backend**: Node.js
 - **Build Tool**: Vite
-- **Other Tools**: Isomorphic-fetch for HTTP requests
-
-## Contributing
-
-We welcome contributions! To contribute:
-
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Add feature-name"
-   ```
-4. Push to your fork:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
+- **Other Tools**: Axios, Chalk, Ora, Commander.js
 
 ## License
 
